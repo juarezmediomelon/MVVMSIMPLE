@@ -43,14 +43,15 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
 
+        recyclerView.setHasFixedSize(true);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
+
         //comprobar si existe conexion a internet
         new InternetConnection(internet -> {
             if(!internet)
                 Toast.makeText(getApplicationContext(), "sin conexion a internet", Toast.LENGTH_SHORT).show();
             else{
                 Toast.makeText(getApplicationContext(), "con conexion a internet", Toast.LENGTH_SHORT).show();
-                recyclerView.setHasFixedSize(true);
-                recyclerView.setLayoutManager(new LinearLayoutManager(this));
             }
         });
 
